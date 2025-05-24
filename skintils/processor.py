@@ -36,8 +36,11 @@ class Processor:
         default_files = []
         for i in range(10):
             default_path = os.path.join(skin_path, f'default-{i}.png')
+            default_2x_path = os.path.join(skin_path, f'default-{i}@2x.png')
             if os.path.exists(default_path):
-                default_files.append(default_path)
+                existing_defaults.append(default_path)
+            if os.path.exists(default_2x_path):
+                existing_defaults.append(default_2x_path)
                 
         self.create_backup(skin_path, default_files + [hitcircle_path])
         for i in range(1, 10):
@@ -60,8 +63,11 @@ class Processor:
         default_files = []
         for i in range(10):
             default_path = os.path.join(skin_path, f'default-{i}.png')
+            default_2x_path = os.path.join(skin_path, f'default-{i}@2x.png')
             if os.path.exists(default_path):
-                default_files.append(default_path)
+                existing_defaults.append(default_path)
+            if os.path.exists(default_2x_path):
+                existing_defaults.append(default_2x_path)
                 
         circle_files = glob.glob(os.path.join(skin_path, 'hitcircle*.png'))
         self.create_backup(skin_path, default_files + circle_files)
@@ -81,8 +87,11 @@ class Processor:
         existing_defaults = []
         for i in range(10):
             default_path = os.path.join(skin_path, f'default-{i}.png')
+            default_2x_path = os.path.join(skin_path, f'default-{i}@2x.png')
             if os.path.exists(default_path):
                 existing_defaults.append(default_path)
+            if os.path.exists(default_2x_path):
+                existing_defaults.append(default_2x_path)
         if existing_defaults:
             self.create_backup(skin_path, existing_defaults)
             
@@ -99,5 +108,5 @@ class Processor:
             y = (200 - text_height) // 2
             
             draw.text((x, y), text, font=font, fill=(255, 255, 255, 255))
-            default_path = os.path.join(skin_path, f'default-{i}.png')
+            default_path = os.path.join(skin_path, f'default-{i}@2x.png')
             img.save(default_path)
